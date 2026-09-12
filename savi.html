@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Savi ❤️</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffd1ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+  .container {
+    text-align: center;
+    z-index: 10;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  h1 {
+    font-size: 90px;
+    color: #fff;
+    text-shadow: 0 0 20px #ff4d6d, 0 0 40px #ff4d6d, 0 0 60px #ff4d6d;
+    margin: 0;
+    letter-spacing: 8px;
+  }
+  h2 {
+    font-size: 28px;
+    color: #fff;
+    margin-top: 10px;
+    font-weight: 300;
+  }
+  p {
+    font-size: 20px;
+    color: #fff;
+    margin-top: 20px;
+  }
+  .heart {
+    position: absolute;
+    font-size: 30px;
+    color: #ff4d6d;
+    animation: fall 6s linear infinite;
+    z-index: 1;
+  }
+  @keyframes glow {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+  }
+  @keyframes fall {
+    to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+  }
+  .music-note {
+    position: fixed;
+    bottom: 20px;
+    font-size: 14px;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>SAVI</h1>
+    <h2>Sarah + Victor = Forever ❤️</h2>
+    <p>You're my favorite hello and hardest goodbye, Sarry<br>Team Savi till the end 😊</p>
+  </div>
+  
+  <div class="music-note">🎵 Click anywhere to play our song</div>
+
+  <!-- Add your own romantic song here -->
+  <audio id="bgMusic" loop>
+    <source src="Vic_West_-_Big_Bigger_Biggest_feat_ColloBlue_Malosh_Becky_Fathermoh__Vistanaij.com_.ng_.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+<script>
+  // falling hearts
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.top = '-50px';
+    heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 250);
+
+  // music plays on click because browsers block autoplay
+  document.body.addEventListener('click', function() {
+    const music = document.getElementById('bgMusic');
+    music.volume = 0.4;
+    music.play();
+    document.querySelector('.music-note').style.display = 'none';
+  }, { once: true });
+</script>
+</body>
+</html>
